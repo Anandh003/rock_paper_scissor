@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+    <title>RPS</title>
+</head>
+<body>
+    <script>
+        var gameStates = ["rock", "paper", "scissor"]
+        var playerPoint = 0;
+        var computerPoint = 0;
+        function computerPlay() {
+            return gameStates[Math.floor(Math.random() * gameStates.length)]
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            let returnString = ""
+            playerSelection = playerSelection.toLowerCase()
+            computerSelection = computerSelection.toLowerCase()
+
+            if (
+                gameStates.indexOf(playerSelection) < 0
+                || gameStates.indexOf(computerSelection) < 0
+            ) {
+                return "!!!Invalid Input!!!"
+            }
+
+            if (playerSelection === computerSelection) {
+                returnString = `You both chooses ${playerSelection}`
+            } else if (playerSelection === "rock") {
+                if (computerSelection === "paper") {
+                    computerPoint++;
+                    returnString = `${computerSelection} throws ${playerSelection}`
+                } else if (computerSelection === "scissor") {
+                    playerPoint++
+                    returnString = `${playerSelection} breaks ${computerSelection}`
+                }
+            } else if (playerSelection === "paper") {
+                if (computerSelection === "rock") {
+                    playerPoint++;
+                    returnString = `${playerSelection} throws ${computerSelection} `
+                } else if (computerSelection == "scissor") {
+                    computerPoint++;
+                    returnString = `${computerSelection} tears ${playerSelection}`
+                }
+            } else if (playerSelection === "scissor") {
+                if (computerSelection === "rock") {
+                    computerPoint++;
+                    returnString = `${computerSelection} breaks ${playerSelection}`
+                } else if (computerSelection === "paper") {
+                    playerPoint++;
+                    returnString = `${playerSelection} tears ${computerSelection}`
+                }
+            }
+            return returnString
+        }
+
+        function game() {
+            for (let i=0; i < 5; i++) {
+                let playerInput = prompt(`Enter Your Choice: ${gameStates}`)
+                let computerInput = computerPlay()
+                console.log(playRound(playerInput, computerInput))
+                console.info(`Your Point: ${playerPoint}\n CPU Point: ${computerPoint}`)
+            }
+
+            if (playerPoint > computerPoint) {
+                console.log("Congrats You Won The Game!!!")
+            } else if (playerPoint < computerPoint) {
+                console.log("Better Luck Next Time!!!")
+            } else {
+                console.log("Draw!! Worth Opponent")
+            }
+        }
+
+        game()
+    </script>
+</body>
