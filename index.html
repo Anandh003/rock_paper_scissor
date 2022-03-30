@@ -1,75 +1,45 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>RPS</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <script>
-        var gameStates = ["rock", "paper", "scissor"]
-        var playerPoint = 0;
-        var computerPoint = 0;
-        function computerPlay() {
-            return gameStates[Math.floor(Math.random() * gameStates.length)]
-        }
+    <div class="page-container">
+        <div class="game-container">
+            <div class="game-title">Rock Paper Scissor</div>
+            <div class="points-container">
+                <div>Your Score: <span id="playerScore">0</span></div>
+                <div>Computer Score: <span id="computerScore">0</span></div>
+            </div>
 
-        function playRound(playerSelection, computerSelection) {
-            let returnString = ""
-            playerSelection = playerSelection.toLowerCase()
-            computerSelection = computerSelection.toLowerCase()
+            <div class="game-area">
+                <div class="player-container">
+                    <div>Player</div>
+                    <div id="player-area" class="player-area"></div>
+                </div>
 
-            if (
-                gameStates.indexOf(playerSelection) < 0
-                || gameStates.indexOf(computerSelection) < 0
-            ) {
-                return "!!!Invalid Input!!!"
-            }
+                <div class="computer-container">
+                    <div>Computer</div>
+                    <div id="computer-area" class="computer-area"></div>
+                </div>
+            </div>
+            <div id="result" class="result-area">&nbsp;</div>
 
-            if (playerSelection === computerSelection) {
-                returnString = `You both chooses ${playerSelection}`
-            } else if (playerSelection === "rock") {
-                if (computerSelection === "paper") {
-                    computerPoint++;
-                    returnString = `${computerSelection} throws ${playerSelection}`
-                } else if (computerSelection === "scissor") {
-                    playerPoint++
-                    returnString = `${playerSelection} breaks ${computerSelection}`
-                }
-            } else if (playerSelection === "paper") {
-                if (computerSelection === "rock") {
-                    playerPoint++;
-                    returnString = `${playerSelection} throws ${computerSelection} `
-                } else if (computerSelection == "scissor") {
-                    computerPoint++;
-                    returnString = `${computerSelection} tears ${playerSelection}`
-                }
-            } else if (playerSelection === "scissor") {
-                if (computerSelection === "rock") {
-                    computerPoint++;
-                    returnString = `${computerSelection} breaks ${playerSelection}`
-                } else if (computerSelection === "paper") {
-                    playerPoint++;
-                    returnString = `${playerSelection} tears ${computerSelection}`
-                }
-            }
-            return returnString
-        }
+            <div class="control-container">
+                <button class="button" id="rock">Rock</button>
+                <button class="button" id="paper">Paper</button>
+                <button class="button" id="scissor">Scissor</button>
+            </div>
+        </div>
+    </div>
 
-        function game() {
-            for (let i=0; i < 5; i++) {
-                let playerInput = prompt(`Enter Your Choice: ${gameStates}`)
-                let computerInput = computerPlay()
-                console.log(playRound(playerInput, computerInput))
-                console.info(`Your Point: ${playerPoint}\n CPU Point: ${computerPoint}`)
-            }
-
-            if (playerPoint > computerPoint) {
-                console.log("Congrats You Won The Game!!!")
-            } else if (playerPoint < computerPoint) {
-                console.log("Better Luck Next Time!!!")
-            } else {
-                console.log("Draw!! Worth Opponent")
-            }
-        }
-
-        game()
-    </script>
+    <script src="app.js"></script>
 </body>
+
+</html>

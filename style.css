@@ -1,0 +1,88 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+.page-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-title {
+    font-size: xx-large;
+    text-align: center;    
+}
+
+
+.game-container {
+    margin: auto;
+    padding: 3%;
+    width: 50%;
+    border: 2px solid #818181;
+    border-radius: 10px;
+    background-color: #faf5f0;
+}
+
+.points-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;   
+}
+
+.game-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.player-area, .computer-area {
+    background-image: url('./assets/all.png');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 200px;
+}
+
+.result-area {
+    padding: 2%;
+    text-align: center;
+    width: 100%;
+    font-size: x-large;
+}
+
+.control-container {
+    padding: 3%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    width: 100px;
+    padding: 10px;
+    border-radius: 10%;
+    margin: 5px;
+}
+
+.player-container, .computer-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .control-container {
+        margin: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
